@@ -16,6 +16,9 @@ uiTooling = "1.7.5"
 room = "2.6.1"
 composeNavigation = "2.8.5"
 uiToolingPreviewAndroidVersion = "1.7.6"
+okhttp = "4.11.0" # Use the latest version available
+retrofit = "2.9.0" # Use the latest version available
+gson = "2.10.1" # For JSON parsing with Retrofit
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -37,6 +40,11 @@ androidx-room-runtime = { group = "androidx.room", name = "room-runtime", versio
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room"}
 androidx-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation"}
 ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version.ref = "uiToolingPreviewAndroidVersion" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

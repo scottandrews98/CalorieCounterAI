@@ -55,6 +55,11 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.google.dagger.hilt)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+
 
     kapt("androidx.room:room-compiler:2.6.1")
     kapt(libs.google.dagger.hilt.compiler)
