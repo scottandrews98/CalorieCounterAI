@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import network.HttpMethod
 import network.NetworkClient
 import network.NetworkRequest
+import network.NetworkResponse
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -15,10 +16,9 @@ class Okhttp3Client @Inject constructor(
     private val gson: Gson
 ) : NetworkClient {
 
-    override suspend fun <T> makeRequest(
+    override suspend fun makeRequest(
         request: NetworkRequest,
-        responseType: Class<T>
-    ): T {
+    ): NetworkResponse {
         val builder = Request.Builder()
             .url(request.url)
 
@@ -44,6 +44,6 @@ class Okhttp3Client @Inject constructor(
             throw Exception("Request failed with code: ${response.code}")
         }
 
-        return gson.fromJson(response.body?.string(), responseType)
+        return NetworkResponse(response.body?.bytes(), response.code)
     }
 }

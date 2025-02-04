@@ -1,8 +1,7 @@
 package network
 
 interface NetworkClient {
-    suspend fun <T> makeRequest(
+    suspend fun makeRequest(
         request: NetworkRequest,
-        responseType: Class<T>
-    ): T
+    ): NetworkResponse
 }

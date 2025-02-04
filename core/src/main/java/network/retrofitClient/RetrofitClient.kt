@@ -3,6 +3,7 @@ package network.retrofitClient
 import network.HttpMethod
 import network.NetworkClient
 import network.NetworkRequest
+import network.NetworkResponse
 import retrofit2.Retrofit
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -18,10 +19,9 @@ class RetrofitClient @Inject constructor(
     private val retrofit: Retrofit
 ) : NetworkClient {
 
-    override suspend fun <T> makeRequest(
+    override suspend fun makeRequest(
         request: NetworkRequest,
-        responseType: Class<T>
-    ): T {
+    ): NetworkResponse {
         // Build a dynamic request using Retrofit's support for annotations
         val dynamicService = retrofit.create(DynamicService::class.java)
         val response = when (request.method) {
@@ -32,7 +32,7 @@ class RetrofitClient @Inject constructor(
             HttpMethod.PATCH -> dynamicService.patch(request.url, request.body, request.headers)
         }
 
-        return response as T // Retrofit handles JSON parsing automatically
+        return NetworkResponse(response.toString().toByteArray(), 200)
     }
 
     interface DynamicService {

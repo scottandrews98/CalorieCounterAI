@@ -42,7 +42,7 @@ object NetworkModule {
 
     @Provides
     @Named("OkHttp")
-    fun provideOkHttpNetworkClient(
+    fun provideOkHttp3NetworkClient(
         okHttpClient: OkHttpClient,
         gson: Gson
     ): NetworkClient {

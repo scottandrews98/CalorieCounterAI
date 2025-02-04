@@ -59,6 +59,7 @@ dependencies {
     implementation(project(":features:tabbar"))
     implementation(project(":core"))
     implementation(project(":features:clubs"))
+    implementation(project(":features:addfood"))
     val composeBom = platform(libs.androidx.compose.bom)
 
     implementation(libs.androidx.core.ktx)

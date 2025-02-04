@@ -1,20 +1,18 @@
 package com.scottandrews.addfood.di
 
+import com.scottandrews.addfood.data.repository.AddFoodRepository
+import com.scottandrews.addfood.usecase.AddFoodUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ViewModelComponent
 
 @Module
-@InstallIn(SingletonComponent::class)
-object AddFoodModule {
-    @Provides
-    fun provideUserGateway(apiService: ApiService, userMapper: UserMapper): UserGateway {
-        return UserGatewayImpl(apiService, userMapper)
-    }
+@InstallIn(ViewModelComponent::class)
+object AddFoodViewModel {
 
     @Provides
-    fun provideUserRepository(userGateway: UserGateway): UserRepository {
-        return UserRepository(userGateway)
+    fun provideGetUsersUseCase(userRepository: AddFoodRepository): AddFoodUseCase {
+        return AddFoodUseCase(userRepository)
     }
 }

@@ -1,15 +1,17 @@
-package com.scottandrews.addfood.data.gateway
+package data.gateways
 
-import com.scottandrews.addfood.data.AddFoodMapper
-import com.scottandrews.addfood.domain.model.AddFoodModel
+
+import data.mappers.AddFoodMapper
+import domain.models.AddFoodModel
 import network.HttpMethod
 import network.NetworkClient
 import network.NetworkRequest
+import org.json.JSONObject
 import javax.inject.Inject
 import javax.inject.Named
 
 interface AddFoodGateway {
-    suspend fun getUsers(): List<AddFoodModel>
+    suspend fun getFoodInformation(): AddFoodModel
 }
 
 class AddFoodGatewayImpl @Inject constructor(
@@ -17,14 +19,14 @@ class AddFoodGatewayImpl @Inject constructor(
     private val mapper: AddFoodMapper
 ) : AddFoodGateway {
 
-    override suspend fun getUsers(): List<AddFoodModel> {
+    override suspend fun getFoodInformation(): AddFoodModel {
         val request = NetworkRequest(
             url = "https://test.com",
             method = HttpMethod.GET
         )
 
-        networkClient.makeRequest(request)
+        val response = networkClient.makeRequest(request)
 
-        return apiService.getUsers().map { mapper.mapToDomain(it) }
+        return mapper.mapToFood(response.respose!!)
     }
 }
