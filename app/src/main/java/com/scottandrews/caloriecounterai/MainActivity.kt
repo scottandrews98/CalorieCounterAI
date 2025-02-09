@@ -21,7 +21,7 @@ import androidx.compose.ui.graphics.Color
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.scottandrews.features.tabbar2.TabBar
+import com.scottandrews.tabbar.TabBar
 import com.scottandrews.caloriecounterai.navigation.AppNavHost
 import com.scottandrews.core.theme.CalorieCounterAITheme
 

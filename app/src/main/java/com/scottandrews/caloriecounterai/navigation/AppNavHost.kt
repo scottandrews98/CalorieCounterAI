@@ -8,8 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.scottandrews.caloriecounterai.screens.CoursesPlayedScreen
 import com.scottandrews.caloriecounterai.screens.HomeScreen
+import com.scottandrews.caloriecounterai.screens.LogScreen
 import com.scottandrews.clubs.individualView.IndivdualClubsViewRoot
 
 @Composable
@@ -27,7 +27,7 @@ fun AppNavHost(
             HomeScreen(navController)
         }
         composable(NavigationItem.CoursesPlayed.route) {
-            CoursesPlayedScreen(navController)
+            LogScreen(navController)
         }
         composable(
             "${NavigationItem.IndividualClubs.route}/{clubId}",
