@@ -18,7 +18,8 @@ composeNavigation = "2.8.5"
 uiToolingPreviewAndroidVersion = "1.7.6"
 okhttp = "4.11.0" # Use the latest version available
 retrofit = "2.9.0" # Use the latest version available
-gson = "2.10.1" # For JSON parsing with Retrofit
+gson = "2.10.1"
+runtimeLivedata = "1.7.7" # For JSON parsing with Retrofit
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -45,6 +46,7 @@ okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-i
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

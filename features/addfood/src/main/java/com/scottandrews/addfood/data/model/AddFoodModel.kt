@@ -1,4 +1,4 @@
-package domain.models
+package com.scottandrews.addfood.data.model
 
 data class AddFoodModel(
     val barcode: String,

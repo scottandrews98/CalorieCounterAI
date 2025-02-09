@@ -1,18 +1,24 @@
 package com.scottandrews.addfood.di
 
-import com.scottandrews.addfood.data.repository.AddFoodRepository
-import com.scottandrews.addfood.usecase.AddFoodUseCase
+import com.scottandrews.addfood.data.repository.AddFoodRepositoryImpl
+import com.scottandrews.addfood.domain.usecase.AddFoodUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
+import network.HTTPClient
 
 @Module
-@InstallIn(ViewModelComponent::class)
-object AddFoodViewModel {
+@InstallIn(SingletonComponent::class)
+object AddFoodModule {
 
     @Provides
-    fun provideGetUsersUseCase(userRepository: AddFoodRepository): AddFoodUseCase {
-        return AddFoodUseCase(userRepository)
+    fun provideAddFoodRepository(httpClient: HTTPClient): AddFoodRepositoryImpl {
+        return AddFoodRepositoryImpl(httpClient)
+    }
+
+    @Provides
+    fun provideAddFoodUseCase(repository: AddFoodRepositoryImpl): AddFoodUseCase {
+        return AddFoodUseCase(repository)
     }
 }

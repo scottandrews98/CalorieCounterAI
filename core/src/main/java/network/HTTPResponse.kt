@@ -1,7 +1,6 @@
 package network
 
-
-data class NetworkResponse(
+data class HTTPResponse(
     val respose: ByteArray?,
     val responseCode: Int,
 )

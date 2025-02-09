@@ -5,9 +5,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import network.NetworkClient
-import network.okhttp3.Okhttp3Client
-import network.retrofitClient.RetrofitClient
+import network.HTTPClient
+import network.okhttp3.OkHttp3Client
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,12 +17,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder().build()
-    }
 
     @Provides
     @Singleton
@@ -41,17 +34,30 @@ object NetworkModule {
     }
 
     @Provides
-    @Named("OkHttp")
-    fun provideOkHttp3NetworkClient(
-        okHttpClient: OkHttpClient,
-        gson: Gson
-    ): NetworkClient {
-        return Okhttp3Client(okHttpClient, gson)
+    @Singleton
+    fun provideOkHttp3Client(): OkHttpClient {
+        return OkHttpClient.Builder().build()
     }
 
     @Provides
-    @Named("Retrofit")
-    fun provideRetrofitNetworkClient(retrofit: Retrofit): NetworkClient {
-        return RetrofitClient(retrofit)
+    @Named("OkHttp")
+    fun provideHTTPClient(
+        okHttpClient: OkHttpClient,
+    ): HTTPClient {
+        return OkHttp3Client(okHttpClient)
     }
+
+
+    @Provides
+    fun provideOkHttpNetworkClient(
+        okHttpClient: OkHttpClient,
+    ): HTTPClient {
+        return OkHttp3Client(okHttpClient)
+    }
+
+//    @Provides
+//    @Named("Retrofit")
+//    fun provideRetrofitNetworkClient(retrofit: Retrofit): HTTPClient {
+//        return RetrofitClient(retrofit)
+//    }
 }

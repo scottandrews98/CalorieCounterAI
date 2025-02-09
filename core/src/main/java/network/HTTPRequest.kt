@@ -1,7 +1,7 @@
 package network
 
 
-data class NetworkRequest(
+data class HTTPRequest(
     val url: String,
     val method: HttpMethod,
     val headers: Map<String, String> = emptyMap(),

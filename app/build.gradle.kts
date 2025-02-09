@@ -13,14 +13,10 @@ android {
         compose = true
     }
 
-    hilt {
-        enableAggregatingTask = false
-    }
-
     defaultConfig {
         applicationId = "com.scottandrews.caloriecounterai"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 

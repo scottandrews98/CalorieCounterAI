@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    kotlin("kapt")
     alias(libs.plugins.google.dagger.hilt)
+    kotlin("kapt")
 }
 
 android {
@@ -60,7 +60,5 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
 
-
-    kapt("androidx.room:room-compiler:2.6.1")
     kapt(libs.google.dagger.hilt.compiler)
 }

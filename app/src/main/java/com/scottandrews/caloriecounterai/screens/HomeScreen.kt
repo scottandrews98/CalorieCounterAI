@@ -24,7 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.scottandrews.addfood.presentation.AddFoodViewRoot
+import com.scottandrews.addfood.presentation.AddFoodView
 import com.scottandrews.clubs.ClubsViewRoot
 import com.scottandrews.clubs.add.ClubsAddFormView
 import kotlinx.coroutines.launch
@@ -50,18 +50,8 @@ fun HomeScreen(navController: NavController) {
 
     Column {
         Text(text = "Home Screen")
-        ClubsViewRoot(navigateToClub = navigateToIndividualClubs)
 
-        if (showBottomSheet) {
-            ModalBottomSheet(
-                onDismissRequest = {
-                    showBottomSheet = false
-                },
-                sheetState = sheetState
-            ) {
-                ClubsAddFormView(closeBottomSheet)
-            }
-        }
+        AddFoodView()
 
         Box(
             modifier = Modifier.fillMaxSize() // Occupies the full screen size
@@ -75,8 +65,6 @@ fun HomeScreen(navController: NavController) {
                 Icon(Icons.Filled.Add, "Floating action button.")
             }
         }
-
-        AddFoodViewRoot()
     }
 }
 
