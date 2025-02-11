@@ -7,14 +7,17 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import network.HTTPClient
+import services.httpServices.addFoodService.AddFoodService
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AddFoodModule {
 
     @Provides
-    fun provideAddFoodRepository(httpClient: HTTPClient): AddFoodRepositoryImpl {
-        return AddFoodRepositoryImpl(httpClient)
+    @Singleton
+    fun provideAddFoodRepository(addFoodService: AddFoodService): AddFoodRepositoryImpl {
+        return AddFoodRepositoryImpl(addFoodService)
     }
 
     @Provides

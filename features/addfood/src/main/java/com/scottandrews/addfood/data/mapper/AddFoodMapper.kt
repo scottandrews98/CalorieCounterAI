@@ -1,20 +1,17 @@
 package com.scottandrews.addfood.data.mapper
 
 import com.scottandrews.addfood.data.model.AddFoodModel
-import org.json.JSONObject
-import java.nio.charset.Charset
+import services.httpServices.addFoodService.response.BarcodeResponse
 
 object AddFoodMapper {
-    fun mapToFood(response: ByteArray): AddFoodModel {
-        val jsonObject = JSONObject(response.toString(Charset.defaultCharset()))
+    fun mapToFood(response: BarcodeResponse): AddFoodModel {
 
-        val productObject = jsonObject.getJSONObject("product")
-        val nutrimentsObject = productObject.getJSONObject("nutriments")
-        val proteins = nutrimentsObject.getDouble("proteins")
-        val energy = nutrimentsObject.getDouble("energy-kcal")
+        val productObject = response.product
+        val proteins = productObject.nutriments.proteins
+        val energy = productObject.nutriments.energyKcal
 
         return AddFoodModel(
-            barcode = jsonObject.getString("code"),
+            barcode = response.code,
             protein = proteins,
             kcal = energy
         )
